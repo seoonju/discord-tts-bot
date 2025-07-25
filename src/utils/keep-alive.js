@@ -1,10 +1,11 @@
 const http = require('http');
 const logger = require('@greencoast/logger');
+const https = require('https'); // Added to use HTTPS
 
 const keepAlive = ({ text, port }) => {
   const portToUse = port || 3000;
 
-  const server = http.createServer((_, res) => {
+  const server = https.createServer((_, res) => { // Changed from http to https
     res.writeHead(200);
     res.end(text || "I'm alive.");
   });
